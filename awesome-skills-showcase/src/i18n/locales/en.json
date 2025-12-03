@@ -1,0 +1,34 @@
+{
+  "app": {
+    "title": "Awesome Claude Skills",
+    "subtitle": "A curated marketplace of practical Claude Skills for enhancing productivity across Claude.ai, Claude Code, and the Claude API",
+    "skillsAvailable": "skills available",
+    "version": "v",
+    "by": "by",
+    "madeWith": "Made with Claude Code",
+    "viewOnGithub": "View on",
+    "showing": "Showing",
+    "of": "of",
+    "skills": "skills"
+  },
+  "search": {
+    "placeholder": "Search plugins by name or description...",
+    "noResults": "No skills found",
+    "tryAdjusting": "Try adjusting your search or filter criteria"
+  },
+  "categories": {
+    "all": "All Categories",
+    "development": "Development",
+    "creative-media": "Creative Media",
+    "business-marketing": "Business Marketing",
+    "productivity-organization": "Productivity Organization",
+    "communication-writing": "Communication Writing",
+    "collaboration-project-management": "Collaboration Project Management",
+    "data-analysis": "Data Analysis",
+    "document-processing": "Document Processing"
+  },
+  "card": {
+    "copyCommand": "Copy Install Command",
+    "copied": "Copied!"
+  }
+}

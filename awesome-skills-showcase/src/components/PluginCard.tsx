@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -10,6 +11,7 @@ interface PluginCardProps {
 }
 
 export function PluginCard({ plugin }: PluginCardProps) {
+  const { t, i18n } = useTranslation();
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -20,10 +22,12 @@ export function PluginCard({ plugin }: PluginCardProps) {
   };
 
   const formatCategory = (category: string) => {
-    return category
-      .split('-')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
+    return t(`categories.${category}`, {
+      defaultValue: category
+        .split('-')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ')
+    });
   };
 
   const getCategoryColor = (category: string) => {
@@ -40,17 +44,26 @@ export function PluginCard({ plugin }: PluginCardProps) {
     return colors[category] || 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200';
   };
 
+  // Get translated skill name and description
+  const skillName = i18n.language === 'zh-CN'
+    ? t(`skills.${plugin.name}.name`, { defaultValue: plugin.name })
+    : plugin.name;
+
+  const skillDescription = i18n.language === 'zh-CN'
+    ? t(`skills.${plugin.name}.description`, { defaultValue: plugin.description })
+    : plugin.description;
+
   return (
     <Card className="h-full flex flex-col transition-all hover:shadow-lg">
       <CardHeader>
         <div className="flex items-start justify-between gap-2">
-          <CardTitle className="text-lg font-semibold">{plugin.name}</CardTitle>
+          <CardTitle className="text-lg font-semibold">{skillName}</CardTitle>
           <Badge className={getCategoryColor(plugin.category)} variant="secondary">
             {formatCategory(plugin.category)}
           </Badge>
         </div>
         <CardDescription className="text-sm mt-2 line-clamp-3">
-          {plugin.description}
+          {skillDescription}
         </CardDescription>
       </CardHeader>
       <CardContent className="flex-grow">
@@ -69,12 +82,12 @@ export function PluginCard({ plugin }: PluginCardProps) {
           {copied ? (
             <>
               <Check className="w-4 h-4 mr-2" />
-              Copied!
+              {t('card.copied')}
             </>
           ) : (
             <>
               <Copy className="w-4 h-4 mr-2" />
-              Copy Install Command
+              {t('card.copyCommand')}
             </>
           )}
         </Button>

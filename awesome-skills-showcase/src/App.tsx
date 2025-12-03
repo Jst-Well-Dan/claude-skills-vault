@@ -1,5 +1,7 @@
 import { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { PluginCard } from './components/PluginCard';
+import { LanguageSwitcher } from './components/LanguageSwitcher';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Search, Package } from 'lucide-react';
@@ -9,6 +11,7 @@ import type { MarketplaceData } from './types';
 const data = marketplaceData as MarketplaceData;
 
 function App() {
+  const { t } = useTranslation();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
@@ -33,10 +36,12 @@ function App() {
   }, [searchQuery, selectedCategory]);
 
   const formatCategory = (category: string) => {
-    return category
-      .split('-')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
+    return t(`categories.${category}`, {
+      defaultValue: category
+        .split('-')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ')
+    });
   };
 
   return (
@@ -44,24 +49,27 @@ function App() {
       {/* Header */}
       <header className="bg-white dark:bg-slate-950 shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="flex items-center gap-3 mb-4">
-            <Package className="w-10 h-10 text-primary" />
-            <div>
-              <h1 className="text-4xl font-bold tracking-tight">
-                Awesome Claude Skills
-              </h1>
-              <p className="text-muted-foreground mt-1">
-                {data.description}
-              </p>
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <Package className="w-10 h-10 text-primary" />
+              <div>
+                <h1 className="text-4xl font-bold tracking-tight">
+                  {t('app.title')}
+                </h1>
+                <p className="text-muted-foreground mt-1">
+                  {t('app.subtitle')}
+                </p>
+              </div>
             </div>
+            <LanguageSwitcher />
           </div>
 
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <span className="font-semibold">{data.plugins.length}</span> skills available
+            <span className="font-semibold">{data.plugins.length}</span> {t('app.skillsAvailable')}
             <span className="mx-2">•</span>
-            <span>v{data.version}</span>
+            <span>{t('app.version')}{data.version}</span>
             <span className="mx-2">•</span>
-            <span>by {data.owner.name}</span>
+            <span>{t('app.by')} {data.owner.name}</span>
           </div>
         </div>
       </header>
@@ -75,7 +83,7 @@ function App() {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
               <Input
                 type="text"
-                placeholder="Search plugins by name or description..."
+                placeholder={t('search.placeholder')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10"
@@ -84,10 +92,10 @@ function App() {
 
             <Select value={selectedCategory} onValueChange={setSelectedCategory}>
               <SelectTrigger className="w-full sm:w-64">
-                <SelectValue placeholder="All Categories" />
+                <SelectValue placeholder={t('categories.all')} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">All Categories</SelectItem>
+                <SelectItem value="all">{t('categories.all')}</SelectItem>
                 {categories.map(category => (
                   <SelectItem key={category} value={category}>
                     {formatCategory(category)}
@@ -98,7 +106,7 @@ function App() {
           </div>
 
           <div className="text-sm text-muted-foreground">
-            Showing {filteredPlugins.length} of {data.plugins.length} skills
+            {t('app.showing')} {filteredPlugins.length} {t('app.of')} {data.plugins.length} {t('app.skills')}
           </div>
         </div>
 
@@ -106,9 +114,9 @@ function App() {
         {filteredPlugins.length === 0 ? (
           <div className="text-center py-12">
             <Package className="w-16 h-16 text-muted-foreground mx-auto mb-4 opacity-50" />
-            <h3 className="text-lg font-semibold mb-2">No skills found</h3>
+            <h3 className="text-lg font-semibold mb-2">{t('search.noResults')}</h3>
             <p className="text-muted-foreground">
-              Try adjusting your search or filter criteria
+              {t('search.tryAdjusting')}
             </p>
           </div>
         ) : (
@@ -124,7 +132,7 @@ function App() {
       <footer className="bg-white dark:bg-slate-950 border-t mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="text-center text-sm text-muted-foreground">
-            <p>Made with Claude Code • View on <a href="https://github.com/ComposioHQ/awesome-claude-skills" className="underline hover:text-foreground" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+            <p>{t('app.madeWith')} • {t('app.viewOnGithub')} <a href="https://github.com/ComposioHQ/awesome-claude-skills" className="underline hover:text-foreground" target="_blank" rel="noopener noreferrer">GitHub</a></p>
           </div>
         </div>
       </footer>
