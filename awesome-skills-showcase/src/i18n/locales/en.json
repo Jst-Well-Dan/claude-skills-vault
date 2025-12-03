@@ -18,14 +18,14 @@
   },
   "categories": {
     "all": "All Categories",
-    "development": "Development",
+    "code-development": "Code Development",
+    "version-control": "Version Control",
+    "office-documents": "Office Documents",
+    "content-creation": "Content Creation",
+    "learning-research": "Learning & Research",
     "creative-media": "Creative Media",
     "business-marketing": "Business Marketing",
-    "productivity-organization": "Productivity Organization",
-    "communication-writing": "Communication Writing",
-    "collaboration-project-management": "Collaboration Project Management",
-    "data-analysis": "Data Analysis",
-    "document-processing": "Document Processing"
+    "data-analysis": "Data Analysis"
   },
   "card": {
     "copyCommand": "Copy Install Command",
