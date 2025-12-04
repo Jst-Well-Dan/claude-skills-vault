@@ -6,19 +6,4 @@
 
 
 
-
-
-
-d3js-visualization 分类应为数据与分析
-
-**skill-creator**、terminal-title、raffle-winner-picker 分类为实用工具
-
-删除template-skill、tapestry
-
-root-cause-tracing 分类应为开发与代码工具
-
-- **document-skills-docx** 、**document-skills-pdf** 、**document-skills-pptx**、**document-skills-xlsx**、、**file-organizer**  分类应为文档处理
-
-invoice-organizer 分类应为财务
-
-deep-reading-analyst、ship-learn-next 分类应为学习
+你是资深的 UI/UX 设计师和前端工程师。我目前的“Claude Code Plugins”网页是一个简单的网格布局，现在 Plugin 数量增多，用户浏览起来非常杂乱。请帮我重构主页的布局 (Layout)，目标风格是现代、简洁、我的用户是非技术用户，因此希望界面好看吸引眼球

@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "description": "A curated marketplace of practical Claude Skills for enhancing productivity across Claude.ai, Claude Code, and the Claude API",
   "owner": {
-    "name": "ComposioHQ",
-    "email": "tech@composio.dev"
+    "name": "Jst-Well-Dan",
+    "url": "https://github.com/Jst-Well-Dan/claude-skills-vault"
   },
   "plugins": [
     {
@@ -13,6 +13,12 @@
       "description": "Extract clean article content from URLs (blog posts, articles, tutorials) and save as readable text. Use when user wants to download, extract, or save an article/blog post from a URL without ads, navigation, or clutter.",
       "source": "./communication-writing/article-extractor",
       "category": "content-creation"
+    },
+    {
+      "name": "algorithmic-art",
+      "description": "Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code, generative art, algorithmic art, flow fields, or particle systems.",
+      "source": "./creative-media/algorithmic-art",
+      "category": "creative-media"
     },
     {
       "name": "artifacts-builder",
@@ -127,6 +133,12 @@
       "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup",
       "source": "./development/finishing-a-development-branch",
       "category": "version-control"
+    },
+    {
+      "name": "frontend-design",
+      "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, or applications. Generates creative, polished code that avoids generic AI aesthetics.",
+      "source": "./development/frontend-design",
+      "category": "code-development"
     },
     {
       "name": "git-pushing",

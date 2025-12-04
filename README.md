@@ -11,11 +11,11 @@
   <a href="https://www.apache.org/licenses/LICENSE-2.0">
     <img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=flat-square" alt="License: Apache-2.0" />
   </a>
-  <img src="https://img.shields.io/badge/Skills-47-blue?style=flat-square" alt="47 Skills" />
+  <img src="https://img.shields.io/badge/Skills-49-blue?style=flat-square" alt="49 Skills" />
 </p>
 
 <p align="center">
-一个包含 <strong>47 个精选实用 Claude Skills</strong> 的扩展集合，用于提升 Claude.ai、Claude Code 和 Claude API 的生产力。
+一个包含 <strong>49 个精选实用 Claude Skills</strong> 的扩展集合，用于提升 Claude.ai、Claude Code 和 Claude API 的生产力。
 </p>
 
 <p align="center">
@@ -26,11 +26,13 @@
 
 ## 📊 快速统计
 
-- **技能总数**: 47+
+- **技能总数**: 49
 - **分类数量**: 8
-- **开发工具**: 14 个编程和软件开发技能
-- **生产力工具**: 10 个任务管理和文档处理技能
-- **组织方式**: 按类别结构化，便于导航
+- **代码开发**: 11 个编程和开发技能
+- **版本协作**: 6 个 Git 和代码审查工具
+- **学习研究**: 7 个学习和知识管理工具
+- **商务营销**: 7 个商务和营销工具
+- **组织方式**: 按内容类型结构化，便于导航
 - **特色**: 包含原项目精选技能 + 社区发现的优质扩展
 
 ---
@@ -40,14 +42,14 @@
 - [什么是 Claude Skills?](#什么是-claude-skills)
 - [项目结构](#项目结构)
 - [按类别分类的技能](#按类别分类的技能)
-  - [开发与代码工具](#开发与代码工具) (14 个技能)
-  - [生产力与组织](#生产力与组织) (10 个技能)
-  - [沟通与写作](#沟通与写作) (6 个技能)
-  - [创意与媒体](#创意与媒体) (6 个技能)
-  - [商务与营销](#商务与营销) (5 个技能)
-  - [协作与项目管理](#协作与项目管理) (3 个技能)
-  - [数据与分析](#数据与分析) (2 个技能)
-  - [文档处理](#文档处理) (1 个技能)
+  - [代码开发](#代码开发) (11 个技能)
+  - [版本协作](#版本协作) (6 个技能)
+  - [Office文档](#office文档) (6 个技能)
+  - [内容创作](#内容创作) (3 个技能)
+  - [学习研究](#学习研究) (7 个技能)
+  - [创意媒体](#创意媒体) (7 个技能)
+  - [商务营销](#商务营销) (7 个技能)
+  - [数据分析](#数据分析) (2 个技能)
 - [其他优秀的 Skills 项目](#其他优秀的-skills-项目)
 - [快速开始](#快速开始)
 - [安装](#安装)
@@ -76,18 +78,19 @@ Claude Skills 是可定制的工作流程，用于教 Claude 如何根据你的�
 ```
 claude-skills-vault/
 ├── .claude-plugin/
-│   └── marketplace.json          # 所有 47 个技能的注册表
+│   └── marketplace.json          # 所有 49 个技能的注册表
 │
-├── business-marketing/            # 5 个技能
-├── collaboration-project-management/  # 3 个技能
-├── communication-writing/         # 6 个技能
-├── creative-media/                # 6 个技能
-├── data-analysis/                 # 2 个技能
-├── development/                   # 14 个技能
-├── document-processing/           # 1 个技能
-├── productivity-organization/     # 10 个技能
-│   └── document-skills/           # Office 文档技能
+├── business-marketing/            # 商务营销 (7 个技能)
+├── collaboration-project-management/  # 版本协作 (部分)
+├── communication-writing/         # 内容创作 + 学习研究 (部分)
+├── creative-media/                # 创意媒体 (7 个技能)
+├── data-analysis/                 # 数据分析 (2 个技能)
+├── development/                   # 代码开发 + 版本协作 (部分)
+├── document-processing/           # Office文档 (部分)
+├── document-skills/               # Office文档 (Office 技能)
+├── productivity-organization/     # Office文档 + 学习研究 (部分)
 │
+├── awesome-skills-showcase/       # Web 展示应用
 ├── config/                        # 配置文件
 ├── logs/                          # 日志文件
 ├── scripts/                       # Python 自动化脚本
@@ -96,60 +99,76 @@ claude-skills-vault/
 └── requirements.txt               # Python 依赖
 ```
 
+**注**：技能按功能分类（见 marketplace.json），但文件夹结构保持原有组织形式。
+
 ---
 
 ## 按类别分类的技能
 
-### 开发与代码工具
-*14 个软件开发、测试和代码质量技能*
+### 代码开发
+*11 个软件开发、前端、后端、可视化和测试技能*
 
 - **artifacts-builder** - 使用 React、Tailwind CSS 和 shadcn/ui 构建精美的多组件 Claude.ai HTML artifacts
-- **changelog-generator** - 通过分析 git 提交历史自动创建面向用户的变更日志
 - **d3js-visualization** - 使用 D3.js 创建交互式数据可视化
 - **developer-growth-analysis** - 分析编码模式并识别改进领域
-- **finishing-a-development-branch** - 通过结构化工作流选项指导开发工作的完成
 - **mcp-builder** - 为 LLM 集成创建高质量的 MCP（模型上下文协议）服务器
 - **move-code-quality-skill** - 分析 Move 语言包的最佳实践和合规性
 - **pypict-claude-skill** - 使用成对组合测试设计全面的测试用例
-- **skill-creator** - 创建有效 Claude Skills 的指导
 - **template-skill** - 新 Claude Skills 的模板和结构
 - **terminal-title** - 自动更新终端窗口标题以反映当前任务
 - **test-driven-development** - 先编写测试，观察它们失败，然后编写最少的代码使其通过
-- **using-git-worktrees** - 为特性开发创建隔离的 git worktrees
 - **webapp-testing** - 使用 Playwright 测试 Web 应用程序进行 UI 验证
 
 ---
 
-### 生产力与组织
-*10 个任务管理、文档处理和工作流程优化技能*
+### 版本协作
+*6 个 Git 版本控制、代码审查和分支管理技能*
 
-- **deep-reading-analyst** - 使用 10+ 思维模型（SCQA、5W2H、批判性思维等）进行文章深度分析框架
+- **changelog-generator** - 通过分析 git 提交历史自动创建面向用户的变更日志
+- **finishing-a-development-branch** - 通过结构化工作流选项指导开发工作的完成
+- **git-pushing** - 使用常规提交消息暂存、提交和推送 git 更改
+- **review-implementing** - 系统地处理和实施代码审查反馈
+- **test-fixing** - 运行测试并使用智能错误分组系统地修复所有失败的测试
+- **using-git-worktrees** - 为特性开发创建隔离的 git worktrees
+
+---
+
+### Office文档
+*6 个 Word、Excel、PowerPoint、PDF 文档处理技能*
+
 - **document-skills-docx** - 创建、编辑和分析 Microsoft Word 文档
 - **document-skills-pdf** - 处理 PDF 文档（提取、合并、注释）
 - **document-skills-pptx** - 创建和编辑 PowerPoint 演示文稿
 - **document-skills-xlsx** - 使用公式和图表操作 Excel 电子表格
 - **file-organizer** - 根据上下文智能组织文件并查找重复项
-- **invoice-organizer** - 组织发票和收据以进行税务准备
-- **raffle-winner-picker** - 使用加密安全的随机性随机选择获胜者
-- **ship-learn-next** - 将学习内容转化为可操作的实施计划
-- **tapestry** - 从 URL 统一提取内容和行动计划
+- **markdown-to-epub-converter** - 将 markdown 文档转换为格式化的 EPUB 电子书文件
 
 ---
 
-### 沟通与写作
-*6 个内容创作、研究和沟通技能*
+### 内容创作
+*3 个写作、头脑风暴和内容提取技能*
 
 - **article-extractor** - 从 URL 提取干净的文章内容，无广告或杂乱信息
 - **brainstorming** - 通过协作提问将粗略的想法完善为成熟的设计
 - **content-research-writer** - 通过研究、引用和反馈撰写高质量内容
-- **family-history-research** - 规划家族史和家谱研究项目
-- **meeting-insights-analyzer** - 分析会议记录以获取行为模式和见解
-- **notebooklm-integration** - 查询 Google NotebookLM 笔记本以获得基于来源的答案
 
 ---
 
-### 创意与媒体
-*6 个视觉内容、视频和创意工作技能*
+### 学习研究
+*7 个深度阅读、知识管理和学习工具*
+
+- **deep-reading-analyst** - 使用 10+ 思维模型（SCQA、5W2H、批判性思维等）进行文章深度分析框架
+- **family-history-research** - 规划家族史和家谱研究项目
+- **meeting-insights-analyzer** - 分析会议记录以获取行为模式和见解
+- **notebooklm-integration** - 查询 Google NotebookLM 笔记本以获得基于来源的答案
+- **ship-learn-next** - 将学习内容转化为可操作的实施计划
+- **skill-creator** - 创建有效 Claude Skills 的指导（适合所有用户）
+- **tapestry** - 从 URL 统一提取内容和行动计划
+
+---
+
+### 创意媒体
+*7 个图像、视频和设计创作技能*
 
 - **canvas-design** - 使用设计原则创建精美的 PNG 和 PDF 视觉艺术
 - **image-enhancer** - 增强专业演示的图像质量和分辨率
@@ -160,38 +179,24 @@ claude-skills-vault/
 
 ---
 
-### 商务与营销
-*5 个商业运营、营销和潜在客户生成技能*
+### 商务营销
+*7 个商业运营、营销和业务工具*
 
 - **brand-guidelines** - 应用 Anthropic 的品牌颜色和排版以实现一致的视觉识别
 - **competitive-ads-extractor** - 从广告库中提取和分析竞争对手的广告
 - **domain-name-brainstormer** - 生成创意域名并检查可用性
 - **internal-comms** - 撰写内部通信（新闻简报、常见问题解答、状态报告）
+- **invoice-organizer** - 组织发票和收据以进行税务准备
 - **lead-research-assistant** - 通过外展策略识别和筛选高质量潜在客户
+- **raffle-winner-picker** - 使用加密安全的随机性随机选择活动获胜者
 
 ---
 
-### 协作与项目管理
-*3 个团队协作和版本控制技能*
-
-- **git-pushing** - 使用常规提交消息暂存、提交和推送 git 更改
-- **review-implementing** - 系统地处理和实施代码审查反馈
-- **test-fixing** - 运行测试并使用智能错误分组系统地修复所有失败的测试
-
----
-
-### 数据与分析
-*2 个数据分析和调试技能*
+### 数据分析
+*2 个数据处理、分析和调试技能*
 
 - **csv-data-summarizer** - 分析 CSV 文件并通过可视化生成洞察
 - **root-cause-tracing** - 通过执行向后追踪错误以找到根本原因
-
----
-
-### 文档处理
-*1 个文档转换技能*
-
-- **markdown-to-epub-converter** - 将 markdown 文档转换为格式化的 EPUB 电子书文件
 
 ---
 

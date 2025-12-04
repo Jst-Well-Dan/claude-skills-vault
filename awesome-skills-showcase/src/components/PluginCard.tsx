@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Copy, Check } from 'lucide-react';
 import type { Plugin } from '../types';
 
 interface PluginCardProps {
   plugin: Plugin;
+  index: number;
 }
 
-export function PluginCard({ plugin }: PluginCardProps) {
+export function PluginCard({ plugin, index }: PluginCardProps) {
   const { t, i18n } = useTranslation();
   const [copied, setCopied] = useState(false);
 
@@ -30,21 +30,57 @@ export function PluginCard({ plugin }: PluginCardProps) {
     });
   };
 
-  const getCategoryColor = (category: string) => {
-    const colors: Record<string, string> = {
-      'development': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
-      'creative-media': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
-      'business-marketing': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
-      'productivity-organization': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
-      'communication-writing': 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200',
-      'collaboration-project-management': 'bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-200',
-      'data-analysis': 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200',
-      'document-processing': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
+  // Category color mapping for left border and badge
+  const getCategoryColors = (category: string) => {
+    const colorMap: Record<string, { border: string; badge: string; bg: string }> = {
+      'code-development': {
+        border: 'border-l-blue-500',
+        badge: 'bg-blue-50 text-blue-700 border-blue-200',
+        bg: 'from-blue-50/30'
+      },
+      'content-creation': {
+        border: 'border-l-purple-500',
+        badge: 'bg-purple-50 text-purple-700 border-purple-200',
+        bg: 'from-purple-50/30'
+      },
+      'learning-research': {
+        border: 'border-l-emerald-500',
+        badge: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+        bg: 'from-emerald-50/30'
+      },
+      'office-documents': {
+        border: 'border-l-amber-500',
+        badge: 'bg-amber-50 text-amber-700 border-amber-200',
+        bg: 'from-amber-50/30'
+      },
+      'version-control': {
+        border: 'border-l-cyan-500',
+        badge: 'bg-cyan-50 text-cyan-700 border-cyan-200',
+        bg: 'from-cyan-50/30'
+      },
+      'creative-media': {
+        border: 'border-l-pink-500',
+        badge: 'bg-pink-50 text-pink-700 border-pink-200',
+        bg: 'from-pink-50/30'
+      },
+      'business-marketing': {
+        border: 'border-l-orange-500',
+        badge: 'bg-orange-50 text-orange-700 border-orange-200',
+        bg: 'from-orange-50/30'
+      },
+      'data-analysis': {
+        border: 'border-l-indigo-500',
+        badge: 'bg-indigo-50 text-indigo-700 border-indigo-200',
+        bg: 'from-indigo-50/30'
+      },
     };
-    return colors[category] || 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200';
+    return colorMap[category] || {
+      border: 'border-l-gray-500',
+      badge: 'bg-gray-50 text-gray-700 border-gray-200',
+      bg: 'from-gray-50/30'
+    };
   };
 
-  // Get translated skill name and description
   const skillName = i18n.language === 'zh-CN'
     ? t(`skills.${plugin.name}.name`, { defaultValue: plugin.name })
     : plugin.name;
@@ -53,45 +89,47 @@ export function PluginCard({ plugin }: PluginCardProps) {
     ? t(`skills.${plugin.name}.description`, { defaultValue: plugin.description })
     : plugin.description;
 
+  const categoryColors = getCategoryColors(plugin.category);
+
   return (
-    <Card className="h-full flex flex-col transition-all hover:shadow-lg">
-      <CardHeader>
-        <div className="flex items-start justify-between gap-2">
-          <CardTitle className="text-lg font-semibold">{skillName}</CardTitle>
-          <Badge className={getCategoryColor(plugin.category)} variant="secondary">
-            {formatCategory(plugin.category)}
-          </Badge>
-        </div>
-        <CardDescription className="text-sm mt-2 line-clamp-3">
-          {skillDescription}
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="flex-grow">
-        <div className="text-xs text-muted-foreground">
-          <span className="font-mono bg-muted px-2 py-1 rounded">
-            {plugin.source}
-          </span>
-        </div>
-      </CardContent>
-      <CardFooter>
-        <Button
+    <div
+      className="h-full animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-backwards"
+      style={{ animationDelay: `${index * 50}ms` }}
+    >
+      <Card className={`group relative h-full flex flex-col overflow-hidden border-l-4 ${categoryColors.border} border-r border-t border-b border-border bg-gradient-to-br ${categoryColors.bg} via-white to-white shadow-md transition-all duration-300 hover:shadow-2xl hover:border-l-4 hover:-translate-y-1`}>
+        {/* Subtle hover gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+        {/* Copy button in top-right corner */}
+        <button
           onClick={handleCopy}
-          className="w-full"
-          variant={copied ? "secondary" : "default"}
+          className="absolute top-3 right-3 z-10 p-2 rounded-lg bg-white/90 backdrop-blur-sm border border-border shadow-sm text-muted-foreground hover:text-primary hover:bg-primary/10 hover:border-primary/30 hover:shadow-md transition-all duration-200 opacity-0 group-hover:opacity-100"
+          title={copied ? t('card.copied') : t('card.copyCommand')}
         >
           {copied ? (
-            <>
-              <Check className="w-4 h-4 mr-2" />
-              {t('card.copied')}
-            </>
+            <Check className="w-4 h-4 text-green-500" />
           ) : (
-            <>
-              <Copy className="w-4 h-4 mr-2" />
-              {t('card.copyCommand')}
-            </>
+            <Copy className="w-4 h-4" />
           )}
-        </Button>
-      </CardFooter>
-    </Card>
+        </button>
+
+        <CardHeader className="relative pb-3">
+          <div className="flex items-start justify-between gap-2 mb-3">
+            <Badge className={`${categoryColors.badge} border transition-colors`}>
+              {formatCategory(plugin.category)}
+            </Badge>
+          </div>
+          <CardTitle className="text-xl font-bold tracking-tight text-foreground transition-colors">
+            {skillName}
+          </CardTitle>
+        </CardHeader>
+
+        <CardContent className="relative flex-grow">
+          <p className="text-muted-foreground text-sm leading-relaxed">
+            {skillDescription}
+          </p>
+        </CardContent>
+      </Card>
+    </div>
   );
 }

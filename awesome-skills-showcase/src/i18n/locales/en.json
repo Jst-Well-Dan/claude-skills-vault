@@ -1,7 +1,7 @@
 {
   "app": {
     "title": "Awesome Claude Skills",
-    "subtitle": "A curated marketplace of practical Claude Skills for enhancing productivity across Claude.ai, Claude Code, and the Claude API",
+    "subtitle": "47+ Professional Claude Skills to 10x Your AI Workflow Efficiency",
     "skillsAvailable": "skills available",
     "version": "v",
     "by": "by",
@@ -11,6 +11,9 @@
     "of": "of",
     "skills": "skills"
   },
+  "hero": {
+    "description": "Beyond chat — unlock infinite possibilities with Claude, from workflow automation to professional content creation"
+  },
   "search": {
     "placeholder": "Search plugins by name or description...",
     "noResults": "No skills found",
@@ -18,6 +21,7 @@
   },
   "categories": {
     "all": "All Categories",
+    "allSkills": "All Skills",
     "code-development": "Code Development",
     "version-control": "Version Control",
     "office-documents": "Office Documents",
@@ -30,5 +34,9 @@
   "card": {
     "copyCommand": "Copy Install Command",
     "copied": "Copied!"
+  },
+  "footer": {
+    "resources": "Resources",
+    "legal": "Legal"
   }
 }

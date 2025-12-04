@@ -1,7 +1,7 @@
 {
   "app": {
     "title": "Claude 技能精选集",
-    "subtitle": "精选实用 Claude 技能市场，提升 Claude.ai、Claude Code 和 Claude API 的生产力",
+    "subtitle": "47+ 个专业 Claude Skills，让你的 AI 工作流效率提升 10 倍",
     "skillsAvailable": "个可用技能",
     "version": "版本",
     "by": "由",
@@ -11,6 +11,9 @@
     "of": "/",
     "skills": "个技能"
   },
+  "hero": {
+    "description": "不再只是聊天 —— 从自动化工作流到专业内容创作，解锁 Claude 的无限可能"
+  },
   "search": {
     "placeholder": "按名称或描述搜索技能...",
     "noResults": "未找到技能",
@@ -18,6 +21,7 @@
   },
   "categories": {
     "all": "全部分类",
+    "allSkills": "所有技能",
     "code-development": "代码开发",
     "version-control": "版本协作",
     "office-documents": "Office文档",
@@ -30,6 +34,10 @@
   "card": {
     "copyCommand": "复制安装命令",
     "copied": "已复制！"
+  },
+  "footer": {
+    "resources": "资源",
+    "legal": "法律"
   },
   "skills": {
     "article-extractor": {

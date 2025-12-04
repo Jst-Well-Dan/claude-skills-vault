@@ -42,6 +42,9 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -63,5 +66,23 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          "bg-grid": (value) => ({
+            backgroundImage: `url("${svgGrid(value)}")`,
+          }),
+        },
+        { values: theme("colors") }
+      );
+    },
+  ],
+}
+
+function svgGrid(color) {
+  return `data:image/svg+xml,${encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="${color}" stroke-width="1"><path d="M0 .5H31.5V32"/></svg>`
+  )}`;
 }
